@@ -683,7 +683,15 @@ int main(int argc, char *argv[])
 
 
 /////////// HAVE CHANNELS LIKE ORIGINAL CONCEPT
-                            //allpattern[i*(total_length-1)*5 +].note = pdata[tpattern[x]][i][t].note;
+                            // NOTE: For some reason, the following line was comitted to the repository
+                            //       by the original authors, I have no idea what that "+" was for,
+                            //       Maybe this is a typo of a fence-post error thing and it was "+1"?
+                            //              I have no idea. Please exercise caution -- Xunie
+                          // this is the intact line:
+                          //allpattern[i*(total_length-1)*5 +].note = pdata[tpattern[x]][i][t].note;
+                          // corrected version:
+                            allpattern[i*(total_length-1)*5].note = pdata[tpattern[x]][i][t].note;
+
                             allpattern[i * n].inst = pdata[tpattern[x]][i][t].inst;
                             allpattern[i * n].vc = pdata[tpattern[x]][i][t].vc;
                             allpattern[i * n].et = pdata[tpattern[x]][i][t].et;
