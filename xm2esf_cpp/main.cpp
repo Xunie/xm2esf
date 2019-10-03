@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <array>
+#include <vector>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -467,7 +469,7 @@ int main(int argc, char *argv[])
             ifstream xmin;
             unsigned char temp[2];
 
-            struct patterndata * pdata;
+            vector<array<array<patterndata,1024>,256>> pdata;
             struct patterndata * allpattern;
             total_length = 0;
             xmfile = xmfile.substr(1,xmfile.size()-3);
@@ -532,7 +534,7 @@ int main(int argc, char *argv[])
 
 
             //struct patterndata pdata[256][128][1024];
-            pdata = new struct patterndata[channels][256][1024];
+            pdata.resize( channels );
             for (i = 0; i < (patterns); i++) {
                 crow = 0;
                 ccan = 1;
@@ -681,7 +683,7 @@ int main(int argc, char *argv[])
 
 
 /////////// HAVE CHANNELS LIKE ORIGINAL CONCEPT
-                            allpattern[i*(total_length-1)*5 +].note = pdata[tpattern[x]][i][t].note;
+                            //allpattern[i*(total_length-1)*5 +].note = pdata[tpattern[x]][i][t].note;
                             allpattern[i * n].inst = pdata[tpattern[x]][i][t].inst;
                             allpattern[i * n].vc = pdata[tpattern[x]][i][t].vc;
                             allpattern[i * n].et = pdata[tpattern[x]][i][t].et;
